@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="720px" version="1.1" viewBox="0 0 1100 720" width="1100px">
+  <defs/>
+  <rect fill="white" height="720" width="1100" x="0" y="0"/>
+  <text fill="#1D3557" font-family="Consolas, 'Courier New', monospace" font-size="16" font-weight="bold" text-anchor="middle" x="550.0" y="36">RL-based Dynamic Model Selection for Black-Litterman Portfolio Optimization</text>
+  <text fill="#6C757D" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="middle" x="550.0" y="56">End-to-End Pipeline</text>
+  <g>
+    <rect fill="white" height="48" rx="6" ry="6" stroke="#457B9D" stroke-width="1.5" width="900" x="100" y="80"/>
+    <circle cx="116" cy="96" fill="#457B9D" r="10"/>
+    <text fill="white" font-family="Consolas, 'Courier New', monospace" font-size="10" font-weight="bold" text-anchor="middle" x="116" y="100">1</text>
+    <text fill="#1D3557" font-family="Consolas, 'Courier New', monospace" font-size="13" font-weight="bold" x="132" y="100">Data Preparation</text>
+    <text fill="#6C757D" font-family="Consolas, 'Courier New', monospace" font-size="10" x="132" y="116">Raw dataset  →  Asset panel (12 assets × 2,268 days)  →  5-day excess return targets</text>
+  </g>
+  <line stroke="#ADB5BD" stroke-width="1.2" x1="550.0" x2="550.0" y1="128" y2="156"/>
+  <polygon fill="#ADB5BD" points="550.0,156 546.0,149 554.0,149"/>
+  <g>
+    <rect fill="white" height="60" rx="6" ry="6" stroke="#7F8C8D" stroke-width="1.5" width="900" x="100" y="156"/>
+    <circle cx="116" cy="172" fill="#7F8C8D" r="10"/>
+    <text fill="white" font-family="Consolas, 'Courier New', monospace" font-size="10" font-weight="bold" text-anchor="middle" x="116" y="176">2</text>
+    <text fill="#1D3557" font-family="Consolas, 'Courier New', monospace" font-size="13" font-weight="bold" x="132" y="176">Nested Walk-Forward Cross-Validation</text>
+    <text fill="#6C757D" font-family="Consolas, 'Courier New', monospace" font-size="10" x="132" y="192">Train (1,008d)  |  View-Build (252d)  |  Test (756d)   —   Sliding window: 63d/fold</text>
+  </g>
+  <line stroke="#ADB5BD" stroke-width="1.2" x1="550.0" x2="550.0" y1="216" y2="244"/>
+  <polygon fill="#ADB5BD" points="550.0,244 546.0,237 554.0,237"/>
+  <g>
+    <rect fill="white" height="110" rx="6" ry="6" stroke="#F5A623" stroke-width="1.5" width="420" x="100" y="244"/>
+    <circle cx="116" cy="260" fill="#F5A623" r="10"/>
+    <text fill="white" font-family="Consolas, 'Courier New', monospace" font-size="10" font-weight="bold" text-anchor="middle" x="116" y="264">3</text>
+    <text fill="#1D3557" font-family="Consolas, 'Courier New', monospace" font-size="13" font-weight="bold" x="132" y="264">Forecasting Models</text>
+    <text fill="#6C757D" font-family="Consolas, 'Courier New', monospace" font-size="9" x="120" y="288">ML (8):  OLS, Ridge, Lasso, DT, RF, XGB, LGBM, CatBoost</text>
+    <text fill="#6C757D" font-family="Consolas, 'Courier New', monospace" font-size="9" x="120" y="306">DL (6):  PatchTST, CNN1D, LSTM, MLP, Transformer, Hybrid</text>
+    <text fill="#F5A623" font-family="Consolas, 'Courier New', monospace" font-size="9" font-weight="bold" x="120" y="330">Output: Per-asset 5d excess return predictions</text>
+  </g>
+  <g>
+    <rect fill="white" height="110" rx="6" ry="6" stroke="#E63946" stroke-width="1.5" width="420" x="580" y="244"/>
+    <circle cx="596" cy="260" fill="#E63946" r="10"/>
+    <text fill="white" font-family="Consolas, 'Courier New', monospace" font-size="10" font-weight="bold" text-anchor="middle" x="596" y="264">4</text>
+    <text fill="#1D3557" font-family="Consolas, 'Courier New', monospace" font-size="13" font-weight="bold" x="612" y="264">RL Model Selection (4 Agents)</text>
+    <text fill="#6C757D" font-family="Consolas, 'Courier New', monospace" font-size="9" x="600" y="288">DQN_Pred  /  PPO_Pred   (per-asset, MAE reward)</text>
+    <text fill="#6C757D" font-family="Consolas, 'Courier New', monospace" font-size="9" x="600" y="306">DQN_Port  /  PPO_Port   (cross-sect., Sharpe reward)</text>
+    <text fill="#E63946" font-family="Consolas, 'Courier New', monospace" font-size="9" font-weight="bold" x="600" y="330">Output: Best model per (asset, date)</text>
+  </g>
+  <line stroke="#ADB5BD" stroke-width="1.2" x1="520" x2="580" y1="299.0" y2="299.0"/>
+  <polygon fill="#ADB5BD" points="580,299.0 573,295.0 573,303.0"/>
+  <line stroke="#ADB5BD" stroke-width="1.2" x1="550.0" x2="550.0" y1="354" y2="382"/>
+  <polygon fill="#ADB5BD" points="550.0,382 546.0,375 554.0,375"/>
+  <g>
+    <rect fill="white" height="60" rx="6" ry="6" stroke="#7B68EE" stroke-width="1.5" width="900" x="100" y="382"/>
+    <circle cx="116" cy="398" fill="#7B68EE" r="10"/>
+    <text fill="white" font-family="Consolas, 'Courier New', monospace" font-size="10" font-weight="bold" text-anchor="middle" x="116" y="402">5</text>
+    <text fill="#1D3557" font-family="Consolas, 'Courier New', monospace" font-size="13" font-weight="bold" x="132" y="402">Black-Litterman Portfolio Construction</text>
+    <text fill="#6C757D" font-family="Consolas, 'Courier New', monospace" font-size="10" x="132" y="418">View (P, Q, Ω)  →  Market Eq. (π = δΣw)  →  BL Posterior (μ_BL)  →  MVO  →  Weights w*</text>
+  </g>
+  <line stroke="#ADB5BD" stroke-width="1.2" x1="550.0" x2="550.0" y1="442" y2="470"/>
+  <polygon fill="#ADB5BD" points="550.0,470 546.0,463 554.0,463"/>
+  <g>
+    <rect fill="white" height="60" rx="6" ry="6" stroke="#2ECC71" stroke-width="1.5" width="900" x="100" y="470"/>
+    <circle cx="116" cy="486" fill="#2ECC71" r="10"/>
+    <text fill="white" font-family="Consolas, 'Courier New', monospace" font-size="10" font-weight="bold" text-anchor="middle" x="116" y="490">6</text>
+    <text fill="#1D3557" font-family="Consolas, 'Courier New', monospace" font-size="13" font-weight="bold" x="132" y="490">Walk-Forward Backtest &amp; Evaluation</text>
+    <text fill="#6C757D" font-family="Consolas, 'Courier New', monospace" font-size="10" x="132" y="506">5-day rebalancing  |  19 strategies compared  |  Sharpe, Return, MDD, Turnover, Win Rate</text>
+  </g>
+  <line stroke="#ADB5BD" stroke-width="1.2" x1="550.0" x2="550.0" y1="530" y2="554"/>
+  <polygon fill="#ADB5BD" points="550.0,554 546.0,547 554.0,547"/>
+  <rect fill="#1D3557" height="36" rx="4" ry="4" stroke="none" width="700" x="200.0" y="558"/>
+  <text fill="white" font-family="Consolas, 'Courier New', monospace" font-size="12" font-weight="bold" text-anchor="middle" x="550.0" y="580">RL agents dynamically select optimal models  →  Superior risk-adjusted returns</text>
+</svg>
